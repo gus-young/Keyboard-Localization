@@ -89,9 +89,12 @@ options=(
   "Mali,ml"
   "Tanzania,tz"
 )
+# Creates blank lists for loop to full
 country_list=()
 code_list=()
 
+# Splits options list in to "Country" and "Code" 
+# This allows the script to only have one list amd also making sure the Countries and Codes maintain their indexes
 for item in "${options[@]}"; do
     IFS=, read country code <<<"$item"
     country_list+=("$country")
@@ -101,6 +104,7 @@ done
 # Use zenity to create the dropdown menu
 selected_option=$(zenity --list --title="Choose a New Keyboard Layout" --column="Options" "${country_list[@]}")
 
+# Function that returns index of input element from GUI 
 index_of() {
   local search_element="$1"
   local i=0
@@ -115,7 +119,11 @@ index_of() {
   return 1
 }
 
+# Calls Index function and returns index value 
 index=$(index_of $selected_option)
+
+# Using index value, pulls country code 
 keyboard_code=${code_list[$index]}
 
+# Sets new keyboard layout
 setxkbmap $keyboard_code
