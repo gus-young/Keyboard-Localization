@@ -2,7 +2,7 @@
 Version=0.1
 Name=Change Keyboard
 Comment=Utility for quickly changing the keyboard language.
-Exec=/usr/bin/change_keyboard.sh
+Exec=/usr/bin/LangSwap.sh
 Icon=/usr/share/icons/Humanity/apps/32/access.svg
 Terminal=false
 Type=Application
